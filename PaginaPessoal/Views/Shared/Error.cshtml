@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container mt-5">
+    <h1 class="text-danger">Error.</h1>
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+
+    @if (Model?.RequestId != null)
+    {
+        <p>
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <p>
+        <strong>Development Mode:</strong> When in development mode, detailed error information is displayed.
+        <br>
+        <strong>Production Mode:</strong> Error details should not be displayed in production.
+    </p>
+
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">Back to Home</a>
+</div>
