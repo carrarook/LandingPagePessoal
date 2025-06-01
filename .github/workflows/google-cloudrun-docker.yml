@@ -3,14 +3,14 @@ name: Build and Deploy to Cloud Run
 on:
   push:
     branches:
-      - main # Ou a branch principal do seu projeto, ex: master, develop
+      - main
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   REGION: ${{ secrets.GCP_REGION }}
   ARTIFACT_REGISTRY_REPO: ${{ secrets.ARTIFACT_REGISTRY_REPO }}
   CLOUD_RUN_SERVICE_NAME: ${{ secrets.CLOUD_RUN_SERVICE_NAME }}
-  IMAGE_NAME: my-app # Nome da imagem Docker, pode ser o nome da sua aplicação
+  IMAGE_NAME: my-app
 
 jobs:
   build-and-deploy:
@@ -34,12 +34,14 @@ jobs:
 
     - name: Configure Docker to use Artifact Registry
       run: |
-        gcloud auth configure-docker ${REGION}-docker.pkg.dev
+        gcloud auth configure-docker "${REGION}-docker.pkg.dev"
 
     - name: Build and Push Docker image to Artifact Registry
       run: |
-        docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ARTIFACT_REGISTRY_REPO}/${IMAGE_NAME}:${{ github.sha }} .
-        docker push ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ARTIFACT_REGISTRY_REPO}/${IMAGE_NAME}:${{ github.sha }}
+        IMAGE_URI="${REGION}-docker.pkg.dev/${PROJECT_ID}/${ARTIFACT_REGISTRY_REPO}/${IMAGE_NAME}:${GITHUB_SHA}"
+        docker build -t "$IMAGE_URI" .
+        docker push "$IMAGE_URI"
+        echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_ENV
 
     - name: Deploy to Google Cloud Run
       id: deploy
@@ -47,22 +49,8 @@ jobs:
       with:
         service: ${{ env.CLOUD_RUN_SERVICE_NAME }}
         region: ${{ env.REGION }}
-        image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.ARTIFACT_REGISTRY_REPO }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        # Opcional: Especifique a porta se sua aplicação não escuta na 8080
-        # port: 8080
-        # Opcional: Adicione variáveis de ambiente do Cloud Run
-        # env_vars: |
-        #   MY_VARIABLE=my_value
-        #   ANOTHER_VARIABLE=another_value
-        # Opcional: Defina a quantidade mínima de instâncias
-        # min-instances: 0
-        # Opcional: Defina a quantidade máxima de instâncias
-        # max-instances: 1
-        # Opcional: Defina a memória
-        # memory: 512Mi
-        # Opcional: Defina o CPU
-        # cpu: 1
-        # Opcional: Permitir requisições não autenticadas
-        # allow-unauthenticated: true
+        image: ${{ env.IMAGE_URI }}
+        allow-unauthenticated: true
 
-
+    - name: Show deployed URL
+      run: echo "Cloud Run service URL: ${{ steps.deploy.outputs.url }}"
