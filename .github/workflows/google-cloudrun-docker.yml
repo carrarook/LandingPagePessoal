@@ -65,5 +65,4 @@ jobs:
         # Opcional: Permitir requisições não autenticadas
         # allow-unauthenticated: true
 
-    - name: Show deployed URL
-      run: echo "Cloud Run service URL: ${{ steps.deploy.outputs.url }}"
+
