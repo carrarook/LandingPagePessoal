@@ -38,6 +38,6 @@ jobs:
           gcloud run deploy my-service-prod  \
             --image "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/my-project-prod:latest" \
             --region ${{ secrets.GCP_REGION }} \
-            --project ${{ secrets.GCP_PROJECT_ID }} \ 
+            --project ${{ secrets.GCP_PROJECT_ID }} 
            
             
