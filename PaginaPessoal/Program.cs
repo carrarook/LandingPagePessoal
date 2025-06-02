@@ -43,6 +43,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// DESCOMENTAR ANTES DE PROD
+//var port = Environment.GetEnvironmentVariable("PORT") ?? "80";
+//app.Urls.Add($"http://*:{port}");
+
+
 
 // Configura o pipeline de requisições HTTP.
 if (app.Environment.IsDevelopment())
