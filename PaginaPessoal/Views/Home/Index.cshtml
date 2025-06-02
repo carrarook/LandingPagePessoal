@@ -11,27 +11,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
 
-    <link rel="stylesheet" href="@Url.Content("~/css/StyleSheet.css")" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+    <link rel="stylesheet" href="/css/StyleSheet.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-     <!-- Primeira Seção --> 
-     <section class="First">
+    <!-- Primeira Seção -->
+    <section class="First">
 
 
-         
-            <div class="content"> 
-                <h1 class="name dynamic-text">Bruno<br />Carraro</h1>
-                <h2 class="title dynamic-text">Fullstack<br />Developer</h2>
-                <h3 class="stack dynamic-text">.NET<br />React</h3>
-                <a href="#skills"><div class="arrow">⌄</div></a>
 
-         
-         </div> 
-     </section> 
+        <div class="content">
+            <h1 class="name dynamic-text">Bruno<br />Carraro</h1>
+            <h2 class="title dynamic-text">Fullstack<br />Developer</h2>
+            <h3 class="stack dynamic-text">.NET<br />React</h3>
+            <a href="#skills"><div class="arrow">⌄</div></a>
+
+
+        </div>
+    </section>
 
 
     <!-- Seção Skills -->
@@ -68,40 +71,39 @@
         <a href="#projects"><div class="arrow">⌄</div></a>
     </section>
 
-   
-    <!-- Seção Projetos -->
-    <section class="Projects" id="projects">
-    <h2 class="section-title">Projetos</h2>
-
-        <div class="projects-container">
-            <button class="carousel-button prev">←</button>
-            <div class="Projects_Carousel" id="projects-carousel-container">
-            </div>
-            <button class="carousel-button next">→</button>
+    <section id="projects" class="Projects">
+        <h2>Projetos</h2>
+        <div class="owl-carousel" id="owl-carousel">
         </div>
-
         <a href="#contact"><div class="arrow">⌄</div></a>
-</section>
+    </section>
+
 
     <!-- Seção Contato -->
     <section class="Contact" id="contact">
 
-        <h2 class="section-title">Pode me achar por aqui :) </h2>
+        <h2 class="section-title">Pode me achar por aqui :)</h2>
 
-       <div class="contact-links">
+        <div class="contact-links">
 
-    <a href="https://www.linkedin.com/in/obrunocarraro/" target="_blank" rel="noopener noreferrer">
-        <img src="~/imgs/Icons/Icon_Linkedin.svg" alt="Logo LinkedIn" >
-    </a>
-    <a href="https://github.com/carrarook" target="_blank" rel="noopener noreferrer">
-        <img src="~/imgs/Icons/Icon_GitHub.svg" alt="Logo GitHub">
-    </a>
-    <a href="mailto:obrunocarraro@gmail.com">
-        <img src="~/imgs/Icons/Icon_Email.svg" width="48px" alt="Logo Email">
-    </a>
-</div>
+            <a href="https://www.linkedin.com/in/obrunocarraro/" target="_blank" rel="noopener noreferrer">
+                <img src="/imgs/Icons/Icon_Linkedin.svg" alt="Logo LinkedIn">
+            </a>
+            <a href="https://github.com/carrarook" target="_blank" rel="noopener noreferrer">
+                <img src="/imgs/Icons/Icon_GitHub.svg" alt="Logo GitHub">
+            </a>
+            <a href="mailto:obrunocarraro@gmail.com">
+                <img src="/imgs/Icons/Icon_Email.svg" width="48px" alt="Logo Email">
+            </a>
+        </div>
         <div class="signature">- Take your time</div>
     </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- JS do Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
     <script>
@@ -113,6 +115,6 @@
         ).start();
     </script>
 
-    <script src="~/js/site.js"></script>
+    <script src="/js/site.js"></script>
 </body>
 </html>
