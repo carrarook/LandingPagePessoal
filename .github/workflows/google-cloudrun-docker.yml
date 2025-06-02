@@ -53,4 +53,4 @@ jobs:
         allow-unauthenticated: true
 
     - name: Show deployed URL
-      run: echo "Cloud Run service URL :${{ steps.deploy.outputs.url }}"
+      run: echo "Cloud Run service URL= ${DEPLOY_URL}"
