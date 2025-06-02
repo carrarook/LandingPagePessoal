@@ -35,7 +35,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud rund deploy my-service-prod  \
+          gcloud run deploy my-service-prod  \
             --image "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/my-project-prod:latest" \
             --region ${{ secrets.GCP_REGION }} \
             --projetc ${{ secrets.GCP_PROJECT_ID }} \ 
