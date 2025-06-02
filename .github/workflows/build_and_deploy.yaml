@@ -29,14 +29,14 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_URI="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/my-project-prod:latest"
+          IMAGE_URI="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/pagina-pessoal2:latest"
           docker build -t "$IMAGE_URI" PaginaPessoal
           docker push "$IMAGE_URI"
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy my-service-prod  \
-            --image "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/my-project-prod:latest" \
+            --image "${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/pagina-pessoal/pagina-pessoal2:latest" \
             --region ${{ secrets.GCP_REGION_CLOUD_RUN }} \
             --project ${{ secrets.GCP_PROJECT_ID }} 
            
