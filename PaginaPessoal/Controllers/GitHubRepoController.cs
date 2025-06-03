@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace PaginaPessoal.Controllers;
 
@@ -28,7 +26,8 @@ public class ProjectsController : ControllerBase
                 Name = repo.Name,
                 Description = repo.Description,
                 HtmlUrl = repo.Html_Url,
-                // ReadmeContent removido
+                Topics = repo.Topics,
+
             });
         }
 
@@ -41,5 +40,7 @@ public class ProjectViewModel
     public string Name { get; set; }
     public string Description { get; set; }
     public string HtmlUrl { get; set; }
-    // public string ReadmeContent { get; set; } removido
+
+    public List<string> Topics { get; set; }
+
 }

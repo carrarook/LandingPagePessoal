@@ -1,16 +1,5 @@
-using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models; // Adicionado para o Swagger
 using PaginaPessoal.Models;  // Removido - agora em pastas separadas
-using PaginaPessoal.Controllers; // Removido - agora em pastas separadas
 
 // Método Main (Program.cs)
 var builder = WebApplication.CreateBuilder(args);
