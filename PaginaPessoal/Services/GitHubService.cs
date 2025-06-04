@@ -1,9 +1,6 @@
-﻿using System.Net.Http;
+﻿using PaginaPessoal.Models;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using PaginaPessoal.Models;
 
 public class GitHubService
 {
@@ -18,8 +15,8 @@ public class GitHubService
         _httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("Your-App-Name"); // Substitua pelo nome da sua aplicação
 
         // Removendo a dependência de IConfiguration e usando valores padrão fixos para teste
-        _githubUsername = "carrarook";  // Substitua pelo seu nome de usuário do GitHub
-        _githubToken = "";    // Substitua pelo seu token de acesso pessoal (se tiver)
+        _githubUsername = "carrarook";
+        _githubToken = "";
 
         if (!string.IsNullOrEmpty(_githubToken))
         {
